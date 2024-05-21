@@ -7,21 +7,24 @@ import connectToMongoDB from "./db/connectToMongoDB.js";
 const app = express();
 
 dotenv.config();
-const PORT=process.env.PORT || 5000;
+const PORT=process.env.PORT || 27001;
 
-app.get("/", (req,res)=>{
 
-    //root route http://localhost:5000/
+app.use(express.json());
 
-    res.send("Hello world");
+// app.get("/", (req,res)=>{
 
-});
+//     //root route http://localhost:5000/
+
+//     res.send("Hello world");
+
+// });
 
 app.use("/api/auth",authRoutes)
 
 
 
-app.listen(PORT,() => {
+app.listen(PORT,"192.168.0.109",() => {
 
     connectToMongoDB();
     console.log(`Server Running on port ${PORT} `);
